@@ -9,7 +9,6 @@ from PySide2 import QtCore, QtWidgets, QtGui
 class MyWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
-        self.setMinimumSize(1280, 768)
         self.setWindowTitle('Game Club Managment System')
        # widgets
         self.lbl_logo = QtWidgets.QLabel('K A T A N A')
@@ -35,6 +34,21 @@ class MyWindow(QtWidgets.QWidget):
         self.txt_min.setPlaceholderText('Minute')
         self.btn_submit = QtWidgets.QPushButton('Register')
         self.regForm_groupBox = QtWidgets.QGroupBox('Register Form')
+        # table widget
+        self.table_client = QtWidgets.QTableWidget(self)
+        self.table_client.setRowCount(7)
+        self.table_client.setColumnCount(5)
+        self.table_client.setItem(0,0, QtWidgets.QTableWidgetItem("Console"))
+        self.table_client.setItem(0, 1, QtWidgets.QTableWidgetItem("Client Name"))
+        self.table_client.setItem(0, 2, QtWidgets.QTableWidgetItem("Start Time"))
+        self.table_client.setItem(0, 3, QtWidgets.QTableWidgetItem("Credit"))
+        self.table_client.setItem(0, 4, QtWidgets.QTableWidgetItem("extra"))
+        self.header = self.table_client.horizontalHeader()
+        self.header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+        self.header.setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+        self.header.setSectionResizeMode(2, QtWidgets.QHeaderView.Stretch)
+        self.header.setSectionResizeMode(3, QtWidgets.QHeaderView.Stretch)
+        self.header.setSectionResizeMode(4, QtWidgets.QHeaderView.Stretch)
        # layouts
         # Register Form
         self.regForm_layout = QtWidgets.QHBoxLayout()
@@ -49,6 +63,7 @@ class MyWindow(QtWidgets.QWidget):
         self.main_layout = QtWidgets.QVBoxLayout()
         self.main_layout.addWidget(self.lbl_logo)
         self.main_layout.addWidget(self.regForm_groupBox)
+        self.main_layout.addWidget(self.table_client)
         self.setLayout(self.main_layout)
         self.regForm_groupBox.setLayout(self.regForm_layout)
         
